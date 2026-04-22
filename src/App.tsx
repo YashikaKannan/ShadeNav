@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Sun, Moon, MapPin, Navigation, AlertTriangle, Shield, Zap, Clock, Volume2, ChevronDown, Loader, Flame, Droplets, Wind } from 'lucide-react'
+import { Sun, Moon, MapPin, Navigation, AlertTriangle, Shield, Zap, Clock, Volume2, ChevronDown, Loader, Droplets, Wind } from 'lucide-react'
 import './App.css'
 
 interface Route {
