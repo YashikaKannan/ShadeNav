@@ -584,17 +584,12 @@ export default function App() {
           )}
         </main>
 
-        {/* Footer - Full Width */}
-        <footer className="mt-16 py-10 bg-slate-50 dark:bg-slate-900/60 border-t border-slate-200 dark:border-slate-700/50 backdrop-blur-sm text-center text-slate-600 dark:text-slate-400 transition-colors duration-300">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="font-semibold text-slate-900 dark:text-white">🌍 ShadeNav - Heat Safe Routes</p>
-            <p className="text-sm mt-2">Navigate Smarter, Travel Safer</p>
-            <div className="flex items-center justify-center gap-4 mt-3 text-sm text-slate-500 dark:text-slate-400">
-              <span>Built for Hackathon 🚀</span>
-              <span className="opacity-50">•</span>
-              <span>Climate-aware safety navigation</span>
-            </div>
-            <p className="text-xs mt-3 text-slate-500 dark:text-slate-500">AI-powered climate-aware navigation for a safer tomorrow</p>
+        {/* Footer - Full Width, minimal and professional */}
+        <footer className="w-full mt-16 py-8 site-footer transition-colors duration-300">
+          <div className="w-full px-6 sm:px-8 text-center">
+            <p className="font-semibold text-slate-900 dark:text-white">HeatSafe Routes</p>
+            <p className="text-sm mt-2 text-slate-600 dark:text-slate-300">Navigate Smarter. Travel Safer.</p>
+            <p className="text-xs mt-2 text-slate-400 dark:text-slate-500 hidden">Climate-aware navigation</p>
           </div>
         </footer>
       </div>
