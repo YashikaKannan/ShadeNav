@@ -218,9 +218,6 @@ button:hover { transform: translateY(-2px); }
   opacity: 1;
 }
 
-/* Map container sizing */
-.map-container { height: 100%; width: 100%; }
-
 /* Smooth page transitions */
 main {
   animation: fade-in 0.4s ease;

@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Sun, Moon, MapPin, Navigation, AlertTriangle, Shield, Zap, Clock, Volume2, ChevronDown, Loader, Droplets, Wind } from 'lucide-react'
-import 'leaflet/dist/leaflet.css'
-import { MapContainer, TileLayer, Polyline, CircleMarker } from 'react-leaflet'
+import { Sun, Moon, MapPin, Navigation, AlertTriangle, Shield, Zap, Clock, Volume2, ChevronDown, Loader, Flame, Droplets, Wind } from 'lucide-react'
 import './App.css'
 
 interface Route {
@@ -92,22 +90,6 @@ export default function App() {
 
   const currentRoute = routes.find(r => r.id === selectedRoute) || routes[1]
   const adjustedHeatRisk = calculateHeatRisk(currentRoute.heatRisk)
-
-  // Mock coordinates for demo routes (lat, lng)
-  const routeCoordsA: [number, number][] = [
-    [37.773972, -122.431297],
-    [37.7749, -122.4194],
-    [37.776, -122.409],
-  ]
-
-  const routeCoordsB: [number, number][] = [
-    [37.773972, -122.431297],
-    [37.772, -122.425],
-    [37.77, -122.418],
-    [37.768, -122.412],
-  ]
-
-  const mapCenter: [number, number] = [37.773972, -122.431297]
 
   const handleFindRoute = () => {
     if (source && destination) {
@@ -532,27 +514,47 @@ export default function App() {
                 Play Audio Alert
               </button>
 
-              {/* Map Visualization with Leaflet */}
+              {/* Map Visualization */}
               <div className="card dark:bg-slate-800/50 dark:border dark:border-slate-700">
                 <h3 className="text-lg font-bold mb-4">Map View</h3>
-                <div className="relative w-full h-96 rounded-lg border border-slate-300 dark:border-slate-600 overflow-hidden">
-                  <MapContainer center={mapCenter} zoom={13} scrollWheelZoom={false} className="map-container h-full w-full">
-                    <TileLayer
-                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                <div className="relative w-full h-96 bg-gradient-to-br from-slate-200 to-slate-100 dark:from-slate-700 dark:to-slate-800 rounded-lg border border-slate-300 dark:border-slate-600 overflow-hidden">
+                  {/* Simulated Map */}
+                  <svg className="w-full h-full" viewBox="0 0 400 300">
+                    {/* Background */}
+                    <rect width="400" height="300" fill="currentColor" className="fill-slate-200 dark:fill-slate-700" />
+
+                    {/* Heat zones background */}
+                    <rect x="150" y="80" width="100" height="80" fill="rgba(239, 68, 68, 0.2)" />
+                    <ellipse cx="200" cy="120" rx="60" ry="40" fill="rgba(239, 68, 68, 0.15)" />
+
+                    {/* Route A - Red (Hot) */}
+                    <path
+                      d="M 50 50 Q 150 80 300 200"
+                      stroke="rgb(239, 68, 68)"
+                      strokeWidth="6"
+                      fill="none"
+                      strokeDasharray="10,5"
                     />
 
-                    {/* Route A - dashed red */}
-                    <Polyline positions={routeCoordsA} pathOptions={{ color: '#ef4444', weight: 5, dashArray: '8 6' }} />
+                    {/* Route B - Green (Safe) */}
+                    <path
+                      d="M 50 50 Q 100 120 150 180 Q 200 220 300 200"
+                      stroke="rgb(34, 197, 94)"
+                      strokeWidth="6"
+                      fill="none"
+                    />
 
-                    {/* Route B - solid green */}
-                    <Polyline positions={routeCoordsB} pathOptions={{ color: '#22c55e', weight: 5 }} />
+                    {/* Markers */}
+                    <circle cx="50" cy="50" r="8" fill="rgb(59, 130, 246)" />
+                    <circle cx="300" cy="200" r="8" fill="rgb(239, 68, 68)" />
 
-                    {/* Heat zone marker */}
-                    <CircleMarker center={[37.775, -122.413]} pathOptions={{ color: '#ef4444', fillColor: 'rgba(239,68,68,0.22)', fillOpacity: 0.6 }} radius={28} />
-                  </MapContainer>
+                    {/* Legend */}
+                    <g>
+                      {/* legacy svg legend removed - replaced with modern overlay */}
+                    </g>
+                  </svg>
 
-                  {/* Modern glass legend overlay - top-right on md, bottom-center on small */}
+                  {/* Modern glass legend overlay - bottom center on small screens, top-right on md */}
                   <div className="map-legend animate-fadeIn absolute left-1/2 bottom-4 transform -translate-x-1/2 md:left-auto md:top-4 md:right-6 md:translate-x-0">
                     <div className="legend-inner flex items-center gap-4 px-4 py-2 rounded-2xl">
                       <div className="legend-title text-xs font-semibold opacity-80 mr-2 hidden md:block">Route Legend</div>
