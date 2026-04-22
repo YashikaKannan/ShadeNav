@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Sun, Moon, MapPin, Navigation, AlertTriangle, Shield, Zap, Clock, Volume2, ChevronDown, Loader, Droplets, Wind } from 'lucide-react'
 import './App.css'
+import Chatbot from './components/Chatbot'
 
 interface Route {
   id: string
@@ -592,6 +593,7 @@ export default function App() {
             <p className="text-xs mt-2 text-slate-400 dark:text-slate-500 hidden">Climate-aware navigation</p>
           </div>
         </footer>
+        <Chatbot />
       </div>
   )
 }
